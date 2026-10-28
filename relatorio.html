@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Gerador de relatório de campanhas · Laiza Borges</title>
+<meta name="description" content="Projeto demo com dados fictícios: transforma os números de campanhas de mídia em um relatório semanal escrito, para cliente ou para a equipe, usando regras.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Gerador de relatório de campanhas · Laiza Borges">
+<meta property="og:description" content="Os números viram um relatório escrito: resumo, leitura, recomendação de verba e próximos testes A/B.">
+<meta name="theme-color" content="#B3202A">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23B3202A'/%3E%3Ctext x='16' y='22' font-family='sans-serif' font-size='16' font-weight='700' text-anchor='middle' fill='white'%3ELB%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="page">
+  <div class="corner" aria-hidden="true"></div>
+
+  <nav class="nav" aria-label="Principal">
+    <a class="brand" href="index.html">LB</a>
+    <a href="painel.html">Painel de KPIs</a>
+    <a href="relatorio.html" aria-current="page">Relatório</a>
+    <a href="monitor.html">Monitor de mídia</a>
+    <a href="curriculo.html">Currículo</a>
+  </nav>
+
+  <section class="demo" style="border-top:0">
+    <span class="tag">Projeto · automação por regras · dados fictícios</span>
+    <h1 style="font-size:clamp(2rem,6vw,3.2rem)">Gerador de relatório de campanhas</h1>
+    <p class="sub">Transforma os números do painel em um relatório semanal escrito, na linguagem de quem vai ler. Funciona direto no navegador, sem IA e sem cadastro: o texto sai de regras que eu escrevi.</p>
+
+    <ol class="steps">
+      <li><strong>O código calcula.</strong> CPM, CTR, CPC, CPA, ROAS e ROI saem das mesmas fórmulas do painel.</li>
+      <li><strong>As regras escrevem.</strong> Regras do tipo se/então comparam os canais e montam o texto em seções fixas: resumo, leitura dos números, verba, testes A/B e limites. Toda explicação que os números não provam aparece marcada como hipótese.</li>
+      <li><strong>O texto muda com o leitor.</strong> "Cliente" troca as siglas por linguagem simples. "Analista da equipe" usa as siglas.</li>
+    </ol>
+
+    <div class="scroll" role="region" aria-label="Dados de entrada por canal" tabindex="0">
+      <table>
+        <thead>
+          <tr><th>Canal</th><th>Investimento (R$)</th><th>Impressões</th><th>Cliques</th><th>Conversões</th><th>Receita (R$)</th></tr>
+        </thead>
+        <tbody id="in-body"></tbody>
+      </table>
+    </div>
+
+    <div class="controls">
+      <label for="who" class="label">Quem vai ler</label>
+      <select id="who">
+        <option value="cliente">Cliente</option>
+        <option value="interno">Analista da equipe</option>
+      </select>
+      <button type="button" id="run" class="primary">Gerar relatório</button>
+      <button type="button" id="copy-rep" disabled>Copiar texto</button>
+      <button type="button" id="reset">Restaurar exemplo</button>
+    </div>
+    <p class="legend" id="status" role="status" aria-live="polite">Mude os números da tabela, escolha o leitor e gere de novo para ver o texto mudar.</p>
+    <div class="out" id="out" aria-live="polite"><p class="ph">O relatório aparece aqui: resumo, leitura dos números, recomendação de verba e próximos testes A/B.</p></div>
+    <p class="legend">Os dados são fictícios. Os números que você editar ficam só neste navegador e aparecem também no painel. Como qualquer relatório automático, o texto serve de rascunho: revise antes de usar de verdade.</p>
+  </section>
+
+  <section class="demo">
+    <h2>E se a IA escrevesse o texto?</h2>
+    <p class="sub">O mesmo desenho serve para uma versão com IA generativa: o código continua calculando e a IA só redige. Este é o prompt que defini para isso. Ele não é executado nesta página; está aqui para mostrar como eu especifico regras para um modelo.</p>
+    <pre class="prompt">Você é analista de dados de mídia paga em uma agência de branding. Escreva o relatório semanal de performance de campanhas, em português do Brasil.
+
+[Leitor] Cliente sem formação em mídia: evite siglas ou explique cada uma em poucas palavras, em tom profissional e direto. (Ou: analista sênior da equipe, que pode usar as siglas sem explicar.)
+
+Regras: use apenas os números abaixo. As métricas já estão calculadas, não recalcule. Não invente benchmarks, datas, nomes de campanha nem causas que os números não mostrem, e marque como hipótese toda explicação que não vem dos dados. Compare os canais entre si.
+
+Formato: texto simples, sem tabelas e sem negrito. Use exatamente estas seções: Resumo (2 frases); O que os números mostram (3 itens); Recomendação de verba (2 itens); Próximos testes A/B (2 itens); Limites desta análise (1 frase sobre o que os números não cobrem, como margem, atribuição e sazonalidade). No máximo 260 palavras.
+
+Dados por canal:
+[uma linha por canal, com investimento, impressões, cliques, conversões, receita, CPM, CTR, CPC, CPA, ROAS e ROI]</pre>
+    <p class="legend">A divisão de trabalho é a mesma nas duas versões: o código faz a conta, e o texto (de regras ou de IA) só interpreta números já calculados.</p>
+  </section>
+</div>
+
+<script src="kpi.js"></script>
+<script src="relatorio.js"></script>
+<script>
+(function () {
+  var data = KPI.load();
+  var tbody = document.getElementById('in-body');
+  var out = document.getElementById('out');
+  var status = document.getElementById('status');
+  var copyBtn = document.getElementById('copy-rep');
+  var last = '';
+
+  KPI.bindInputs(tbody, data, function () {});
+
+  function gerar() {
+    last = Relatorio.gerar(data, document.getElementById('who').value);
+    Relatorio.render(last, out);
+    copyBtn.disabled = false;
+    status.textContent = 'Relatório gerado. Revise antes de usar.';
+  }
+  document.getElementById('run').addEventListener('click', gerar);
+  document.getElementById('who').addEventListener('change', function () { if (last) gerar(); });
+
+  document.getElementById('reset').addEventListener('click', function () {
+    KPI.reset(data);
+    KPI.renderInputs(tbody, data);
+    if (last) gerar();
+  });
+
+  copyBtn.addEventListener('click', function () {
+    var txt = Relatorio.plain(last);
+    function fallback() { status.textContent = 'Não consegui copiar. Selecione o texto do relatório e use Ctrl+C.'; }
+    try {
+      navigator.clipboard.writeText(txt).then(function () { status.textContent = 'Texto copiado.'; }, fallback);
+    } catch (e) { fallback(); }
+  });
+})();
+</script>
+</body>
+</html>

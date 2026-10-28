@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Monitor de mídia · Laiza Borges</title>
+<meta name="description" content="Projeto em construção: automação semanal que busca notícias sobre uma marca, classifica cada uma como positiva, neutra ou negativa e envia o panorama por e-mail. Exemplo com dados fictícios.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Monitor de mídia · Laiza Borges">
+<meta property="og:description" content="Fluxo e formato do relatório semanal de reputação de marca, com exemplo fictício.">
+<meta name="theme-color" content="#B3202A">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23B3202A'/%3E%3Ctext x='16' y='22' font-family='sans-serif' font-size='16' font-weight='700' text-anchor='middle' fill='white'%3ELB%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="page">
+  <div class="corner" aria-hidden="true"></div>
+
+  <nav class="nav" aria-label="Principal">
+    <a class="brand" href="index.html">LB</a>
+    <a href="painel.html">Painel de KPIs</a>
+    <a href="relatorio.html">Relatório</a>
+    <a href="monitor.html" aria-current="page">Monitor de mídia</a>
+    <a href="curriculo.html">Currículo</a>
+  </nav>
+
+  <section class="demo" style="border-top:0">
+    <span class="tag">Projeto em construção · relatório de exemplo com dados fictícios</span>
+    <h1 style="font-size:clamp(2rem,6vw,3.2rem)">Monitor de mídia</h1>
+    <p class="sub">Uma automação que, toda segunda às 8h, busca as notícias da semana sobre uma marca, usa IA para classificar cada uma como positiva, neutra ou negativa, resume o panorama e envia um relatório por e-mail. A ideia é que quem acompanha a reputação de uma marca receba a leitura pronta no começo da semana, em vez de ler tudo à mão.</p>
+
+    <ol class="steps">
+      <li><strong>Gatilho.</strong> Toda segunda-feira às 8h, no horário de Brasília.</li>
+      <li><strong>Busca.</strong> Coleta as notícias dos últimos 7 dias sobre a marca, por exemplo a partir de um feed RSS de notícias.</li>
+      <li><strong>Classificação.</strong> A IA lê cada notícia e responde positiva, neutra ou negativa, com uma justificativa curta.</li>
+      <li><strong>Panorama.</strong> A IA resume a semana em um parágrafo, com destaques e pontos de atenção.</li>
+      <li><strong>Envio.</strong> O relatório chega por e-mail. Ferramentas previstas: n8n ou Make, um modelo de IA via API e envio de e-mail.</li>
+    </ol>
+
+    <div class="two">
+      <div>
+        <p class="label">Já está pronto</p>
+        <p>O desenho do fluxo, o formato do relatório e o critério de classificação, mostrados no exemplo abaixo.</p>
+      </div>
+      <div>
+        <p class="label">Falta fazer</p>
+        <p>Montar a automação no n8n ou no Make, conectar o feed de notícias e o envio de e-mail, e testar com uma marca real.</p>
+      </div>
+    </div>
+
+    <div class="mail-frame" role="group" aria-label="Exemplo de relatório recebido por e-mail">
+      <div class="mail-head">
+        <div><span class="label">Assunto</span>Panorama semanal · Marca Exemplo · 19 a 25 de out</div>
+        <div><span class="label">Enviado</span>segunda, 26 de out · 08:00</div>
+      </div>
+      <div class="mail-body">
+        <div class="dist" id="mon-dist" role="img" aria-label=""></div>
+        <p id="mon-summary"></p>
+        <div class="filters" id="mon-filters" role="group" aria-label="Filtrar notícias por classificação"></div>
+        <div id="mon-list"></div>
+      </div>
+    </div>
+    <p class="legend">Marca, veículos, notícias e classificações acima foram escritos à mão para mostrar o formato do relatório. Nenhuma automação gerou esse conteúdo. Os filtros funcionam direto no navegador.</p>
+  </section>
+</div>
+
+<script>
+(function () {
+  var NEWS = [
+    { s: 'positiva', t: 'Marca Exemplo lança linha sustentável e recebe elogios de especialistas', src: 'Portal Exemplo', d: '20 out', why: 'Destaca inovação e recepção favorável.' },
+    { s: 'negativa', t: 'Marca Exemplo é alvo de reclamações por atraso em entregas', src: 'Jornal Modelo', d: '20 out', why: 'Foca em falha de serviço e queixas de clientes.' },
+    { s: 'neutra',   t: 'Marca Exemplo anuncia nova loja em São Paulo', src: 'Diário Fictício', d: '21 out', why: 'Informa um fato, sem juízo de valor.' },
+    { s: 'positiva', t: 'Campanha da Marca Exemplo viraliza nas redes e supera meta de alcance', src: 'Portal Exemplo', d: '21 out', why: 'Resultado acima do esperado em comunicação.' },
+    { s: 'negativa', t: 'Consumidores criticam reajuste de preços da Marca Exemplo', src: 'Revista Amostra', d: '22 out', why: 'Reúne críticas de consumidores a preço.' },
+    { s: 'neutra',   t: 'Marca Exemplo participa de feira do setor na próxima semana', src: 'Agência Teste', d: '22 out', why: 'Agenda de evento, sem avaliação.' },
+    { s: 'positiva', t: 'Marca Exemplo é premiada por atendimento ao cliente', src: 'Jornal Modelo', d: '23 out', why: 'Reconhecimento público de qualidade.' },
+    { s: 'neutra',   t: 'Analistas divergem sobre impacto da fusão anunciada pela Marca Exemplo', src: 'Revista Amostra', d: '23 out', why: 'Opiniões divididas, sem tendência clara.' },
+    { s: 'negativa', t: 'Marca Exemplo apura falha em lote de produtos e faz recall voluntário', src: 'Diário Fictício', d: '24 out', why: 'Risco de reputação por problema de produto.' },
+    { s: 'neutra',   t: 'Marca Exemplo troca diretor de marketing', src: 'Agência Teste', d: '25 out', why: 'Mudança de pessoal, informada de forma objetiva.' }
+  ];
+  var LBL = { positiva: 'Positiva', neutra: 'Neutra', negativa: 'Negativa' };
+  var CLS = { positiva: 'good', neutra: 'neutral', negativa: 'bad' };
+  var PLURAL = { todas: 'Todas', positiva: 'Positivas', neutra: 'Neutras', negativa: 'Negativas' };
+  var filter = 'todas';
+
+  function count(s) { return NEWS.filter(function (x) { return x.s === s; }).length; }
+  var n = NEWS.length, p = count('positiva'), u = count('neutra'), g = count('negativa');
+
+  document.getElementById('mon-summary').innerHTML =
+    '<strong>Panorama.</strong> Semana com ' + n + ' notícias: ' + p + ' positivas, ' + u + ' neutras e ' + g + ' negativas. ' +
+    'Os destaques positivos vieram do lançamento da linha sustentável, da campanha nas redes e de um prêmio de atendimento. ' +
+    'Os pontos de atenção são os atrasos nas entregas, o reajuste de preços e o recall voluntário, que merece acompanhamento por ser o assunto de maior risco para a reputação.';
+
+  var dist = document.getElementById('mon-dist');
+  dist.setAttribute('aria-label', p + ' positivas, ' + u + ' neutras e ' + g + ' negativas');
+  dist.innerHTML =
+    '<span class="good" style="width:' + (p / n * 100) + '%"></span>' +
+    '<span class="neutral" style="width:' + (u / n * 100) + '%"></span>' +
+    '<span class="bad" style="width:' + (g / n * 100) + '%"></span>';
+
+  var filters = document.getElementById('mon-filters');
+  function render() {
+    filters.innerHTML = ['todas', 'positiva', 'neutra', 'negativa'].map(function (f) {
+      var c = f === 'todas' ? n : count(f);
+      return '<button type="button" data-f="' + f + '" aria-pressed="' + (filter === f) + '">' + PLURAL[f] + ' (' + c + ')</button>';
+    }).join('');
+    document.getElementById('mon-list').innerHTML = NEWS.filter(function (x) {
+      return filter === 'todas' || x.s === filter;
+    }).map(function (x) {
+      return '<div class="news-item"><span class="pill ' + CLS[x.s] + '">' + LBL[x.s] + '</span>' +
+        '<div><div class="t">' + x.t + '</div><div class="meta">' + x.src + ' · ' + x.d + '</div><div class="why">' + x.why + '</div></div></div>';
+    }).join('');
+  }
+  filters.addEventListener('click', function (e) {
+    var b = e.target.closest('button');
+    if (!b) return;
+    filter = b.dataset.f;
+    render();
+  });
+  render();
+})();
+</script>
+</body>
+</html>

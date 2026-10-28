@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Painel de KPIs de mídia · Laiza Borges</title>
+<meta name="description" content="Painel interativo com dados fictícios: investimento, impressões, cliques, conversões e receita por canal viram CPM, CTR, CPC, CPA, ROAS e ROI.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Painel de KPIs de mídia · Laiza Borges">
+<meta property="og:description" content="Altere os números de cada canal e veja CPM, CTR, CPC, CPA, ROAS e ROI se recalcularem.">
+<meta name="theme-color" content="#B3202A">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23B3202A'/%3E%3Ctext x='16' y='22' font-family='sans-serif' font-size='16' font-weight='700' text-anchor='middle' fill='white'%3ELB%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="page">
+  <div class="corner" aria-hidden="true"></div>
+
+  <nav class="nav" aria-label="Principal">
+    <a class="brand" href="index.html">LB</a>
+    <a href="painel.html" aria-current="page">Painel de KPIs</a>
+    <a href="relatorio.html">Relatório</a>
+    <a href="monitor.html">Monitor de mídia</a>
+    <a href="curriculo.html">Currículo</a>
+  </nav>
+
+  <section class="demo" style="border-top:0">
+    <span class="tag">Projeto demo · dados fictícios</span>
+    <h1 style="font-size:clamp(2rem,6vw,3.2rem)">Painel de KPIs de mídia</h1>
+    <p class="sub">Um exemplo do tipo de leitura que faço no dia a dia: investimento, impressões, cliques, conversões e receita por canal viram CPM, CTR, CPC, CPA, ROAS e ROI. Os números abaixo são inventados. Altere qualquer campo e as métricas, o gráfico e a leitura se recalculam.</p>
+
+    <div class="scroll" role="region" aria-label="Dados de entrada por canal" tabindex="0">
+      <table>
+        <thead>
+          <tr><th>Canal</th><th>Investimento (R$)</th><th>Impressões</th><th>Cliques</th><th>Conversões</th><th>Receita (R$)</th></tr>
+        </thead>
+        <tbody id="in-body"></tbody>
+      </table>
+    </div>
+
+    <div class="strip" id="summary" aria-live="polite">
+      <div><span class="label">Investimento total</span><div class="v" id="s-inv">—</div></div>
+      <div><span class="label">Receita total</span><div class="v" id="s-rec">—</div></div>
+      <div><span class="label">ROAS geral</span><div class="v" id="s-roas">—</div></div>
+      <div><span class="label">ROI geral</span><div class="v" id="s-roi">—</div></div>
+    </div>
+
+    <div class="scroll" role="region" aria-label="Métricas calculadas por canal" tabindex="0">
+      <table>
+        <thead>
+          <tr><th>Canal</th><th>CPM</th><th>CTR</th><th>CPC</th><th>CPA</th><th>ROAS</th><th>ROI</th></tr>
+        </thead>
+        <tbody id="out-body"></tbody>
+        <tfoot id="out-foot"></tfoot>
+      </table>
+    </div>
+
+    <div class="chart-wrap">
+      <p class="label">ROAS por canal</p>
+      <div class="chart" id="chart"></div>
+      <p class="legend">A linha tracejada marca o break-even (ROAS 1×: a receita é igual ao investimento). Barras vermelhas ficam abaixo dele.</p>
+    </div>
+
+    <p class="insight" id="insight"></p>
+
+    <ul class="formulas" aria-label="Fórmulas">
+      <li>CPM = investimento ÷ impressões × 1.000</li>
+      <li>CTR = cliques ÷ impressões</li>
+      <li>CPC = investimento ÷ cliques</li>
+      <li>CPA = investimento ÷ conversões</li>
+      <li>ROAS = receita ÷ investimento</li>
+      <li>ROI = (receita − investimento) ÷ investimento</li>
+    </ul>
+
+    <div class="actions">
+      <button type="button" id="reset">Restaurar exemplo</button>
+      <a class="btn primary" href="relatorio.html">Gerar relatório com estes números →</a>
+    </div>
+    <p class="legend">Feito com apoio do Claude, em HTML e JavaScript puro. A leitura automática usa regras simples sobre os números, sem modelo de IA. Os números que você editar ficam só neste navegador e aparecem também na página do relatório.</p>
+  </section>
+</div>
+
+<script src="kpi.js"></script>
+<script>
+(function () {
+  var K = KPI;
+  var data = K.load();
+
+  function update() {
+    var rows = data.map(function (r) { return { n: r.nome, m: K.metrics(r) }; });
+    var withRoas = rows.filter(function (x) { return x.m.roas !== null; })
+                       .sort(function (a, b) { return b.m.roas - a.m.roas; });
+    var best = withRoas.length > 1 ? withRoas[0] : null;
+    var worst = withRoas.length > 1 ? withRoas[withRoas.length - 1] : null;
+    if (best && worst && best.m.roas === worst.m.roas) { best = null; worst = null; }
+
+    document.getElementById('out-body').innerHTML = rows.map(function (x) {
+      var pill = '';
+      if (best && x === best) pill = '<span class="pill good">Maior ROAS</span>';
+      if (worst && x === worst) pill = '<span class="pill bad">Menor ROAS</span>';
+      return '<tr><th scope="row">' + x.n + pill + '</th><td class="num">' + K.fBrl(x.m.cpm) + '</td><td class="num">' + K.fPct(x.m.ctr) + '</td><td class="num">' + K.fBrl(x.m.cpc) + '</td><td class="num">' + K.fBrl(x.m.cpa) + '</td><td class="num">' + K.fX(x.m.roas) + '</td><td class="num">' + K.fPct(x.m.roi) + '</td></tr>';
+    }).join('');
+
+    var tot = K.totals(data);
+    var tm = K.metrics(tot);
+    document.getElementById('out-foot').innerHTML = '<tr><th scope="row">Total</th><td class="num">' + K.fBrl(tm.cpm) + '</td><td class="num">' + K.fPct(tm.ctr) + '</td><td class="num">' + K.fBrl(tm.cpc) + '</td><td class="num">' + K.fBrl(tm.cpa) + '</td><td class="num">' + K.fX(tm.roas) + '</td><td class="num">' + K.fPct(tm.roi) + '</td></tr>';
+
+    document.getElementById('s-inv').textContent = K.fBrl(tot.inv);
+    document.getElementById('s-rec').textContent = K.fBrl(tot.rec);
+    document.getElementById('s-roas').textContent = K.fX(tm.roas);
+    document.getElementById('s-roi').textContent = K.fPct(tm.roi);
+
+    var vals = rows.map(function (x) { return x.m.roas || 0; });
+    var mx = Math.max.apply(null, [1.5].concat(vals)) * 1.1;
+    document.getElementById('chart').innerHTML = rows.map(function (x) {
+      var v = x.m.roas;
+      var pct = v === null ? 0 : Math.min(100, v / mx * 100);
+      var cls = v !== null && v >= 1 ? 'good' : 'bad';
+      return '<div class="bar-row"><span class="bar-name">' + x.n + '</span><div class="track"><div class="bar ' + cls + '" style="width:' + pct + '%"></div><div class="be" style="left:' + (100 / mx) + '%"></div></div><span class="bar-val">' + K.fX(v) + '</span></div>';
+    }).join('');
+
+    var text;
+    if (withRoas.length < 2) {
+      text = 'Preencha investimento e receita de ao menos dois canais para comparar o retorno.';
+    } else {
+      var b = withRoas[0], w = withRoas[withRoas.length - 1];
+      text = b.n + ' tem o maior retorno (ROAS de ' + K.fX(b.m.roas) + ') e ' + w.n + ' o menor (' + K.fX(w.m.roas) + ').';
+      if (w.m.roas < 1) {
+        text += ' ' + w.n + ' está abaixo do break-even: cada R$ 1 investido volta menos de R$ 1 em receita.';
+      } else if (w.m.roas < b.m.roas * 0.6) {
+        text += ' Por real investido, ' + w.n + ' retorna ' + K.fInt(w.m.roas / b.m.roas * 100) + '% do que ' + b.n + ' retorna. É um candidato a revisão de verba ou de criativos.';
+      } else {
+        text += ' Os canais estão com retornos próximos.';
+      }
+    }
+    document.getElementById('insight').textContent = text;
+  }
+
+  var tbody = document.getElementById('in-body');
+  K.bindInputs(tbody, data, update);
+  document.getElementById('reset').addEventListener('click', function () {
+    K.reset(data);
+    K.renderInputs(tbody, data);
+    update();
+  });
+  update();
+})();
+</script>
+</body>
+</html>

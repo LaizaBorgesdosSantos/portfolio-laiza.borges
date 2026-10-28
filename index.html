@@ -1,219 +1,41 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
-<title>Portfólio Laiza Borges</title>
-<meta name="claude:viewport-fit-sides" content="cover">
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Laiza Borges dos Santos · Dados, automação e IA</title>
+<meta name="description" content="Portfólio de Laiza Borges dos Santos: análise de dados de mídia, automação e IA generativa. Projetos interativos, currículo e contato.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Laiza Borges dos Santos · Dados, automação e IA">
+<meta property="og:description" content="Análise de dados de mídia, automação e IA generativa para transformar dados em insights e reduzir trabalho manual.">
+<meta name="theme-color" content="#B3202A">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23B3202A'/%3E%3Ctext x='16' y='22' font-family='sans-serif' font-size='16' font-weight='700' text-anchor='middle' fill='white'%3ELB%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
-<style>
-/* Layout: relatório de mídia em coluna única, com um painel de KPIs interativo no centro; vermelho só onde há decisão ou destaque. */
-:root {
-  --bg: #FBF8F8;
-  --surface: #FFFFFF;
-  --fg: #1B1517;
-  --muted: #6B5F62;
-  --line: #E6DCDD;
-  --soft: #F4ECEC;
-  --accent: #B3202A;
-  --accent-fg: #FFFFFF;
-  --good: #1F7A4D;
-  --bad: #B3202A;
-  --display: 'Syne', 'Trebuchet MS', sans-serif;
-  --body: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #141011; --surface: #1C1618; --fg: #F4ECEC; --muted: #A89B9E; --line: #32282B; --soft: #231C1E;
-    --accent: #F0646C; --accent-fg: #1B1517; --good: #4FC08A; --bad: #F0646C;
-    color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --bg: #141011; --surface: #1C1618; --fg: #F4ECEC; --muted: #A89B9E; --line: #32282B; --soft: #231C1E;
-  --accent: #F0646C; --accent-fg: #1B1517; --good: #4FC08A; --bad: #F0646C;
-  color-scheme: dark;
-}
-
-* { box-sizing: border-box; }
-body {
-  background: var(--bg);
-  color: var(--fg);
-  font-family: var(--body);
-  font-size: 16px;
-  line-height: 1.6;
-  padding-block: 2rem 4rem;
-  padding-left: max(16px, env(safe-area-inset-left, 0px));
-  padding-right: max(16px, env(safe-area-inset-right, 0px));
-}
-.page { position: relative; max-width: 62rem; margin: 0 auto; }
-.corner {
-  position: absolute; top: -2rem; right: 0;
-  width: clamp(4rem, 14vw, 7.5rem); aspect-ratio: 2 / 1;
-  background: var(--accent);
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 32% 100%);
-}
-:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-a { color: var(--fg); text-decoration-color: var(--accent); text-underline-offset: 3px; }
-a:hover { color: var(--accent); }
-
-h1, h2, h3 { font-family: var(--display); line-height: 1.1; margin: 0; text-wrap: balance; }
-p { margin: 0; }
-.label {
-  font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.1em;
-  text-transform: uppercase; color: var(--muted);
-}
-
-/* Hero */
-.hero { padding-top: clamp(2rem, 7vw, 3.5rem); padding-bottom: 2.5rem; display: grid; gap: 1.25rem; }
-h1 { font-size: clamp(2.4rem, 7.5vw, 4.6rem); font-weight: 800; letter-spacing: -0.02em; }
-h1 span { color: var(--accent); }
-.lead { max-width: 40rem; font-size: 1.15rem; }
-.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 1.25rem 2rem; margin: 0.5rem 0 0; border-top: 1px solid var(--line); padding-top: 1.25rem; }
-.facts div { min-width: 0; }
-.facts dt { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
-.facts dd { margin: 0.2rem 0 0; }
-
-/* Sections */
-section { border-top: 1px solid var(--line); padding-block: 2.5rem; display: grid; gap: 1.5rem; }
-h2 { font-size: clamp(1.6rem, 4vw, 2.1rem); font-weight: 700; }
-.sub { max-width: 42rem; color: var(--muted); }
-
-/* Demo */
-.demo { gap: 1.75rem; }
-.tag {
-  display: inline-block; font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase;
-  padding: 0.15rem 0.5rem; border: 1px solid var(--accent); color: var(--accent); border-radius: 3px; width: fit-content;
-}
-.scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); }
-table { width: 100%; min-width: 38rem; border-collapse: collapse; font-variant-numeric: tabular-nums; }
-th, td { padding: 0.55rem 0.75rem; text-align: right; border-bottom: 1px solid var(--line); white-space: nowrap; }
-tr:last-child th, tr:last-child td { border-bottom: 0; }
-thead th { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 500; background: var(--soft); }
-th:first-child, td:first-child { text-align: left; }
-tbody th { font-weight: 600; }
-tfoot td, tfoot th { font-weight: 600; background: var(--soft); border-bottom: 0; }
-td.num { font-family: var(--mono); font-size: 0.9rem; }
-input[type="number"] {
-  width: 100%; min-width: 6.5rem; padding: 0.4rem 0.55rem; text-align: right;
-  font-family: var(--mono); font-size: 0.9rem; color: var(--fg);
-  background: var(--bg); border: 1px solid var(--line); border-radius: 4px;
-}
-input[type="number"]:hover { border-color: var(--muted); }
-.pill {
-  display: inline-block; margin-left: 0.5rem; font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.06em;
-  text-transform: uppercase; padding: 0.05rem 0.4rem; border: 1px solid currentColor; border-radius: 999px; font-weight: 500; vertical-align: 0.1em;
-}
-.pill.good { color: var(--good); }
-.pill.bad { color: var(--bad); }
-
-.strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr)); gap: 1rem; }
-.strip div { border-left: 2px solid var(--line); padding-left: 0.9rem; min-width: 0; }
-.strip .v { font-family: var(--display); font-size: 1.7rem; font-weight: 700; line-height: 1.15; overflow-wrap: anywhere; }
-
-.chart { display: grid; gap: 0.6rem; }
-.bar-row { display: grid; grid-template-columns: 6.5rem 1fr 4.5rem; gap: 0.75rem; align-items: center; }
-.bar-name { font-weight: 600; font-size: 0.95rem; }
-.bar-val { font-family: var(--mono); font-size: 0.9rem; text-align: right; }
-.track { position: relative; height: 1.5rem; background: var(--soft); border-radius: 3px; }
-.bar { position: absolute; inset: 0 auto 0 0; border-radius: 3px; transition: width 0.3s ease; }
-.bar.good { background: var(--good); }
-.bar.bad { background: var(--bad); }
-.be { position: absolute; top: -0.25rem; bottom: -0.25rem; width: 0; border-left: 2px dashed var(--fg); }
-.legend { font-size: 0.85rem; color: var(--muted); }
-.insight { border-left: 3px solid var(--accent); padding: 0.25rem 0 0.25rem 1rem; max-width: 46rem; }
-.formulas { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 0.4rem 2rem; font-family: var(--mono); font-size: 0.8rem; color: var(--muted); margin: 0; padding: 0; list-style: none; }
-button {
-  font-family: var(--body); font-size: 0.9rem; font-weight: 600; cursor: pointer;
-  padding: 0.5rem 1rem; border-radius: 4px; border: 1px solid var(--fg); background: transparent; color: var(--fg); width: fit-content;
-}
-button:hover { background: var(--fg); color: var(--bg); }
-
-/* Projeto com IA */
-.steps { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.6rem; counter-reset: step; max-width: 46rem; }
-.steps li { counter-increment: step; position: relative; padding-left: 2rem; }
-.steps li::before { content: counter(step); position: absolute; left: 0; top: 0; font-family: var(--mono); font-weight: 500; color: var(--accent); }
-.ai-controls { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
-select {
-  font-family: var(--body); font-size: 0.95rem; color: var(--fg); background: var(--surface);
-  border: 1px solid var(--line); border-radius: 4px; padding: 0.5rem 0.75rem;
-}
-button:disabled { opacity: 0.5; cursor: not-allowed; }
-button:disabled:hover { background: transparent; color: var(--fg); }
-#ai-run { background: var(--accent); color: var(--accent-fg); border-color: var(--accent); }
-#ai-run:hover:not(:disabled) { background: var(--accent); color: var(--accent-fg); filter: brightness(1.1); }
-#ai-run:disabled:hover { background: var(--accent); color: var(--accent-fg); }
-.ai-out { border: 1px solid var(--line); border-radius: 6px; background: var(--surface); padding: 1rem 1.25rem; min-height: 9rem; max-width: 46rem; }
-.ai-out h4 { margin: 1rem 0 0.3rem; font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); }
-.ai-out h4:first-child { margin-top: 0; }
-.ai-out p { margin: 0 0 0.5rem; }
-.ai-out ul { margin: 0 0 0.5rem; padding-left: 1.2rem; }
-.ai-out li { margin-bottom: 0.25rem; }
-.ai-out .ph { color: var(--muted); margin: 0; }
-
-/* Monitor de mídia */
-.pill.neutral { color: var(--muted); }
-.steps { display: grid; gap: 0.6rem; margin: 0; padding-left: 1.4rem; max-width: 44rem; }
-.steps li::marker { font-family: var(--mono); color: var(--accent); }
-.mail-frame { border: 1px solid var(--line); border-radius: 6px; background: var(--surface); overflow: hidden; }
-.mail-head { display: grid; gap: 0.35rem; padding: 0.9rem 1.1rem; background: var(--soft); border-bottom: 1px solid var(--line); font-size: 0.92rem; }
-.mail-head .label { margin-right: 0.6rem; }
-.mail-body { padding: 1.25rem 1.1rem; display: grid; gap: 1.1rem; }
-.dist { display: flex; height: 0.9rem; border-radius: 3px; overflow: hidden; background: var(--soft); }
-.dist span { display: block; height: 100%; }
-.dist .good { background: var(--good); }
-.dist .neutral { background: var(--muted); }
-.dist .bad { background: var(--bad); }
-.filters { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-.filters button { padding: 0.3rem 0.8rem; font-size: 0.85rem; }
-.filters button[aria-pressed="true"] { background: var(--fg); color: var(--bg); }
-.news-item { display: grid; grid-template-columns: 6.5rem 1fr; gap: 0.25rem 1rem; padding: 0.9rem 0; border-top: 1px solid var(--line); }
-.news-item .pill { margin-left: 0; width: fit-content; height: fit-content; }
-.news-item .t { font-weight: 600; }
-.news-item .meta { font-family: var(--mono); font-size: 0.75rem; color: var(--muted); }
-.news-item .why { color: var(--muted); font-size: 0.92rem; }
-@media (max-width: 40rem) { .news-item { grid-template-columns: 1fr; } }
-
-/* Experience */
-.timeline { display: grid; gap: 0; }
-.job { display: grid; grid-template-columns: 11rem 1fr; gap: 0.5rem 2rem; padding-block: 1.4rem; border-top: 1px solid var(--line); }
-.job:first-child { border-top: 0; padding-top: 0; }
-.when { font-family: var(--mono); font-size: 0.82rem; color: var(--muted); }
-.when strong { display: block; color: var(--accent); font-weight: 500; }
-.job h3 { font-size: 1.2rem; font-weight: 700; }
-.job .org { color: var(--muted); margin-bottom: 0.4rem; }
-.job p.d { max-width: 44rem; }
-
-/* Skills / education */
-.two { display: grid; grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr)); gap: 2.5rem; }
-.two > div { min-width: 0; display: grid; gap: 1.25rem; align-content: start; }
-.rows { display: grid; gap: 0.9rem; margin: 0; }
-.rows dt { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
-.rows dd { margin: 0.1rem 0 0; }
-.lvl { color: var(--muted); font-size: 0.9rem; }
-ul.plain { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.9rem; }
-ul.plain li strong { display: block; }
-ul.plain li span { color: var(--muted); font-size: 0.92rem; }
-
-/* Contact */
-.contact { gap: 1rem; }
-.mail { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
-.mail code { font-family: var(--mono); font-size: 1rem; overflow-wrap: anywhere; }
-.foot { font-size: 0.85rem; color: var(--muted); padding-top: 1rem; }
-
-@media (max-width: 40rem) {
-  .job { grid-template-columns: 1fr; gap: 0.25rem; }
-  .bar-row { grid-template-columns: 5rem 1fr 4rem; gap: 0.5rem; }
-}
-@media (prefers-reduced-motion: reduce) { .bar { transition: none; } }
-</style>
-
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
 <div class="page">
   <div class="corner" aria-hidden="true"></div>
+
+  <nav class="nav" aria-label="Principal">
+    <a class="brand" href="index.html" aria-current="page">LB</a>
+    <a href="painel.html">Painel de KPIs</a>
+    <a href="relatorio.html">Relatório</a>
+    <a href="monitor.html">Monitor de mídia</a>
+    <a href="curriculo.html">Currículo</a>
+  </nav>
 
   <header class="hero">
     <p class="label">Portfólio · Dados, automação e IA</p>
     <h1>Laiza Borges <span>dos Santos</span></h1>
     <p class="lead">Estudante de Análise e Desenvolvimento de Sistemas (FIT) e de Arquitetura e Urbanismo (USP). Analiso dados de mídia e uso IA generativa e automação para transformar dados em insights e reduzir trabalho manual.</p>
+    <div class="actions">
+      <a class="btn primary" href="curriculo.html">Ver currículo</a>
+      <a class="btn" href="https://github.com/LaizaBorgesdosSantos" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn" href="https://www.linkedin.com/in/laiza-borges-dos-santos" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
     <dl class="facts">
       <div><dt>Atualmente</dt><dd>Estagiária de Análise de Dados na FutureBrand · Timelens</dd></div>
       <div><dt>Formação</dt><dd>ADS na FIT (previsão jun 2028) e Arquitetura e Urbanismo na FAUUSP (previsão dez 2027)</dd></div>
@@ -221,111 +43,33 @@ ul.plain li span { color: var(--muted); font-size: 0.92rem; }
     </dl>
   </header>
 
-  <section class="demo" id="demo">
-    <span class="tag">Projeto demo · dados fictícios</span>
-    <h2>Painel de KPIs de mídia</h2>
-    <p class="sub">Um exemplo do tipo de leitura que faço no dia a dia: investimento, impressões, cliques, conversões e receita por canal viram CPM, CTR, CPC, CPA, ROAS e ROI. Os números abaixo são inventados. Altere qualquer campo e as métricas, o gráfico e a leitura se recalculam.</p>
-
-    <div class="scroll" role="region" aria-label="Dados de entrada por canal" tabindex="0">
-      <table>
-        <thead>
-          <tr><th>Canal</th><th>Investimento (R$)</th><th>Impressões</th><th>Cliques</th><th>Conversões</th><th>Receita (R$)</th></tr>
-        </thead>
-        <tbody id="in-body"></tbody>
-      </table>
+  <section id="projetos">
+    <h2>Projetos</h2>
+    <p class="sub">Três projetos feitos com dados fictícios para mostrar como eu trabalho. Cada um tem a sua página, e as partes interativas funcionam direto no navegador, sem cadastro e sem depender de nenhum serviço externo.</p>
+    <div class="cards">
+      <a class="card" href="painel.html">
+        <span class="tag">Interativo · dados fictícios</span>
+        <h3>Painel de KPIs de mídia</h3>
+        <p>Investimento, impressões, cliques, conversões e receita por canal viram CPM, CTR, CPC, CPA, ROAS e ROI. Altere os números e tudo se recalcula.</p>
+        <span class="go">Abrir projeto →</span>
+      </a>
+      <a class="card" href="relatorio.html">
+        <span class="tag">Automação por regras · dados fictícios</span>
+        <h3>Gerador de relatório de campanhas</h3>
+        <p>Transforma os números do painel em um relatório semanal escrito, para o cliente ou para a equipe, em um clique.</p>
+        <span class="go">Abrir projeto →</span>
+      </a>
+      <a class="card" href="monitor.html">
+        <span class="tag">Em construção · exemplo fictício</span>
+        <h3>Monitor de mídia</h3>
+        <p>Automação semanal que classifica as notícias sobre uma marca e envia o panorama por e-mail. A página mostra o fluxo e o formato do relatório.</p>
+        <span class="go">Abrir projeto →</span>
+      </a>
     </div>
-
-    <div class="strip" id="summary" aria-live="polite">
-      <div><span class="label">Investimento total</span><div class="v" id="s-inv">—</div></div>
-      <div><span class="label">Receita total</span><div class="v" id="s-rec">—</div></div>
-      <div><span class="label">ROAS geral</span><div class="v" id="s-roas">—</div></div>
-      <div><span class="label">ROI geral</span><div class="v" id="s-roi">—</div></div>
-    </div>
-
-    <div class="scroll" role="region" aria-label="Métricas calculadas por canal" tabindex="0">
-      <table>
-        <thead>
-          <tr><th>Canal</th><th>CPM</th><th>CTR</th><th>CPC</th><th>CPA</th><th>ROAS</th><th>ROI</th></tr>
-        </thead>
-        <tbody id="out-body"></tbody>
-        <tfoot id="out-foot"></tfoot>
-      </table>
-    </div>
-
-    <div class="chart-wrap" style="display:grid;gap:0.75rem">
-      <p class="label">ROAS por canal</p>
-      <div class="chart" id="chart"></div>
-      <p class="legend">A linha tracejada marca o break-even (ROAS 1×: a receita é igual ao investimento). Barras vermelhas ficam abaixo dele.</p>
-    </div>
-
-    <p class="insight" id="insight"></p>
-
-    <ul class="formulas" aria-label="Fórmulas">
-      <li>CPM = investimento ÷ impressões × 1.000</li>
-      <li>CTR = cliques ÷ impressões</li>
-      <li>CPC = investimento ÷ cliques</li>
-      <li>CPA = investimento ÷ conversões</li>
-      <li>ROAS = receita ÷ investimento</li>
-      <li>ROI = (receita − investimento) ÷ investimento</li>
-    </ul>
-
-    <button type="button" id="reset">Restaurar exemplo</button>
-    <p class="legend">Feito com apoio do Claude, em HTML e JavaScript puro. A leitura automática usa regras simples sobre os números, sem modelo de IA.</p>
   </section>
 
-  <section class="demo" id="ia">
-    <span class="tag">Projeto com IA · usa os dados do painel acima</span>
-    <h2>Analista de campanhas com IA</h2>
-    <p class="sub">Transforma os números do painel em um relatório semanal escrito. A página calcula as métricas e o Claude escreve a leitura, na linguagem de quem vai ler.</p>
-    <ol class="steps">
-      <li><strong>O código calcula.</strong> CPM, CTR, CPC, CPA, ROAS e ROI saem das fórmulas do painel, para a IA não fazer conta.</li>
-      <li><strong>O prompt define as regras.</strong> Usar só os números enviados, marcar hipótese como hipótese, seguir seções fixas e respeitar um limite de palavras.</li>
-      <li><strong>A IA escreve.</strong> O texto aparece em tempo real e pode ser interrompido.</li>
-    </ol>
-    <div class="ai-controls">
-      <label for="ai-who" class="label">Quem vai ler</label>
-      <select id="ai-who">
-        <option value="cliente">Cliente</option>
-        <option value="interno">Analista da equipe</option>
-      </select>
-      <button type="button" id="ai-run" disabled>Gerar relatório com IA</button>
-      <button type="button" id="ai-stop" hidden>Parar</button>
-    </div>
-    <p class="legend" id="ai-status" role="status" aria-live="polite">Verificando se a IA está disponível…</p>
-    <div class="ai-out" id="ai-out" aria-live="polite"><p class="ph">O relatório aparece aqui: resumo, leitura dos números, recomendação de verba e próximos testes A/B. Mude os números do painel antes de gerar para ver o texto mudar.</p></div>
-    <p class="legend">Cada geração usa o seu próprio uso do Claude, e o navegador pede permissão na primeira vez. Os dados do painel são fictícios. Revise o texto antes de usar de verdade.</p>
-  </section>
-
-  <section class="demo" id="monitor">
-    <span class="tag">Projeto em construção · relatório de exemplo com dados fictícios</span>
-    <h2>Monitor de mídia com IA</h2>
-    <p class="sub">Uma automação que, toda segunda às 8h, busca as notícias da semana sobre uma marca, usa IA para classificar cada uma como positiva, neutra ou negativa, resume o panorama e envia um relatório por e-mail. A ideia é que quem acompanha a reputação de uma marca receba a leitura pronta no começo da semana, em vez de ler tudo à mão.</p>
-
-    <ol class="steps">
-      <li><strong>Gatilho.</strong> Toda segunda-feira às 8h, no horário de Brasília.</li>
-      <li><strong>Busca.</strong> Coleta as notícias dos últimos 7 dias sobre a marca, por exemplo a partir de um feed RSS de notícias.</li>
-      <li><strong>Classificação.</strong> A IA lê cada notícia e responde positiva, neutra ou negativa, com uma justificativa curta.</li>
-      <li><strong>Panorama.</strong> A IA resume a semana em um parágrafo, com destaques e pontos de atenção.</li>
-      <li><strong>Envio.</strong> O relatório chega por e-mail. Ferramentas previstas: n8n ou Make, um modelo de IA via API e envio de e-mail.</li>
-    </ol>
-
-    <div class="mail-frame" role="group" aria-label="Exemplo de relatório recebido por e-mail">
-      <div class="mail-head">
-        <div><span class="label">Assunto</span>Panorama semanal · Marca Exemplo · 19 a 25 de out</div>
-        <div><span class="label">Enviado</span>segunda, 26 de out · 08:00</div>
-      </div>
-      <div class="mail-body">
-        <div class="dist" id="mon-dist" role="img" aria-label=""></div>
-        <p id="mon-summary"></p>
-        <div class="filters" id="mon-filters" role="group" aria-label="Filtrar notícias por classificação"></div>
-        <div id="mon-list"></div>
-      </div>
-    </div>
-    <p class="legend">Marca, veículos, notícias e classificações acima foram escritos à mão para mostrar o formato do relatório. Nenhuma automação gerou esse conteúdo.</p>
-  </section>
-
-  <section id="experiencia">
-    <h2>Experiência</h2>
+  <section id="atuacao">
+    <h2>Atuação recente</h2>
     <div class="timeline">
       <article class="job">
         <div class="when"><strong>ago 2026 – atual</strong>São Paulo, SP</div>
@@ -343,70 +87,8 @@ ul.plain li span { color: var(--muted); font-size: 0.92rem; }
           <p class="d">Atuação em projetos de certificação de edificações sustentáveis. Responsável pela análise de documentação técnica. Uso de IA para análise de dados e elaboração de relatórios.</p>
         </div>
       </article>
-      <article class="job">
-        <div class="when"><strong>set 2024 – set 2025</strong>São Paulo, SP</div>
-        <div>
-          <h3>Iniciação Científica</h3>
-          <p class="org">Pesquisa acadêmica · CNPq</p>
-          <p class="d">Cartografias Negras: Mapeando o Quilombo Praia Grande. Pesquisa sobre mapeamento de território, com levantamento bibliográfico, análise de dados e produção de materiais acadêmicos.</p>
-        </div>
-      </article>
-      <article class="job">
-        <div class="when"><strong>mai 2024 – dez 2024</strong>São Paulo, SP</div>
-        <div>
-          <h3>Trainee em Machine Learning</h3>
-          <p class="org">FEA.dev · USP</p>
-          <p class="d">Projeto de análise dos microdados do ENEM, com foco em variáveis socioeconômicas e sua relação com o desempenho dos candidatos. Uso de Python para tratamento, organização e interpretação dos dados. Atuação também no design das redes sociais do grupo.</p>
-        </div>
-      </article>
     </div>
-  </section>
-
-  <section id="habilidades">
-    <h2>Habilidades e formação</h2>
-    <div class="two">
-      <div>
-        <dl class="rows">
-          <div><dt>IA e automação</dt><dd>IA generativa, prompt engineering, vibe coding, automação</dd></div>
-          <div><dt>Dados</dt><dd>Python <span class="lvl">(intermediário)</span>, SQL <span class="lvl">(intermediário)</span>, Power BI <span class="lvl">(intermediário)</span>, Pacote Office <span class="lvl">(intermediário)</span>, QGIS <span class="lvl">(intermediário)</span></dd></div>
-          <div><dt>Desenvolvimento</dt><dd>JavaScript, C# e HTML <span class="lvl">(básico)</span></dd></div>
-          <div><dt>Design</dt><dd>Figma e Adobe <span class="lvl">(intermediário)</span></dd></div>
-          <div><dt>Idiomas</dt><dd>Inglês <span class="lvl">(intermediário)</span>, Espanhol <span class="lvl">(básico)</span></dd></div>
-        </dl>
-      </div>
-      <div>
-        <ul class="plain">
-          <li><strong>Análise e Desenvolvimento de Sistemas</strong><span>Faculdade Impacta Tecnologia (FIT) · 2026 – jun 2028</span></li>
-          <li><strong>Arquitetura e Urbanismo</strong><span>Universidade de São Paulo (FAUUSP) · 2023 – dez 2027</span></li>
-          <li><strong>Ensino Médio Integrado ao Técnico em Edificações</strong><span>Escola Técnica Guaracy Silveira · 2019 – 2021</span></li>
-        </ul>
-        <div>
-          <p class="label">Cursos (Alura)</p>
-          <p>Data Science, Lógica de Programação, JavaScript, HTML e CSS</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="outras">
-    <h2>Destaques e voluntariado</h2>
-    <div class="two">
-      <div>
-        <p class="label">Destaques</p>
-        <ul class="plain">
-          <li><strong>ISMART Universitário</strong><span>Selecionada em processo altamente competitivo para programa de desenvolvimento de talentos.</span></li>
-          <li><strong>Instituto Semear · Jovem Semente</strong><span>Selecionada para programa de formação e aceleração de jovens universitários de alto potencial.</span></li>
-        </ul>
-      </div>
-      <div>
-        <p class="label">Voluntariado</p>
-        <ul class="plain">
-          <li><strong>Monitora de Programação · Escola de Programação para meninas, ICMC-USP</strong><span>2026 – 2027 · Atuação com meninas e mulheres na aprendizagem de programação.</span></li>
-          <li><strong>Facilitadora de oficinas · Plan International Brasil</strong><span>2025 – 2026 · Equidade de gênero e direitos das mulheres.</span></li>
-          <li><strong>Facilitadora de oficinas · Instituto Semear</strong><span>2023 · Escolas públicas: acesso à educação universitária e mobilidade social.</span></li>
-        </ul>
-      </div>
-    </div>
+    <p><a class="back" href="curriculo.html">Ver currículo completo →</a></p>
   </section>
 
   <section class="contact" id="contato">
@@ -416,302 +98,13 @@ ul.plain li span { color: var(--muted); font-size: 0.92rem; }
       <button type="button" id="copy">Copiar e-mail</button>
       <span class="legend" id="copy-msg" role="status"></span>
     </div>
-    <p><a href="https://www.linkedin.com/in/laiza-borges-dos-santos" target="_blank" rel="noopener">linkedin.com/in/laiza-borges-dos-santos</a></p>
-    <p class="foot">Esta página e os dois projetos foram construídos com apoio do Claude.</p>
+    <p class="links">
+      <a href="https://www.linkedin.com/in/laiza-borges-dos-santos" target="_blank" rel="noopener">linkedin.com/in/laiza-borges-dos-santos</a>
+      <a href="https://github.com/LaizaBorgesdosSantos" target="_blank" rel="noopener">github.com/LaizaBorgesdosSantos</a>
+    </p>
+    <p class="foot">Esta página e os projetos foram construídos com apoio do Claude.</p>
   </section>
 </div>
-
-<script>
-(function () {
-  var DEFAULT = [
-    { nome: 'Meta Ads',   inv: 12000, imp: 840000, cli: 16800, con: 420, rec: 31500 },
-    { nome: 'Google Ads', inv: 9000,  imp: 210000, cli: 8400,  con: 336, rec: 26880 },
-    { nome: 'TikTok',     inv: 6000,  imp: 720000, cli: 7200,  con: 108, rec: 7560 }
-  ];
-  var FIELDS = ['inv', 'imp', 'cli', 'con', 'rec'];
-  var LABELS = { inv: 'Investimento', imp: 'Impressões', cli: 'Cliques', con: 'Conversões', rec: 'Receita' };
-  var data = clone(DEFAULT);
-
-  var brl = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
-  var dec = new Intl.NumberFormat('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-  var int = new Intl.NumberFormat('pt-BR', { maximumFractionDigits: 0 });
-
-  function clone(x) { return JSON.parse(JSON.stringify(x)); }
-  function div(a, b) { return b > 0 ? a / b : null; }
-  function metrics(r) {
-    var cpm = div(r.inv, r.imp);
-    return {
-      cpm: cpm === null ? null : cpm * 1000,
-      ctr: div(r.cli, r.imp),
-      cpc: div(r.inv, r.cli),
-      cpa: div(r.inv, r.con),
-      roas: div(r.rec, r.inv),
-      roi: r.inv > 0 ? (r.rec - r.inv) / r.inv : null
-    };
-  }
-  function fBrl(v) { return v === null ? '—' : brl.format(v); }
-  function fPct(v) { return v === null ? '—' : dec.format(v * 100) + '%'; }
-  function fX(v) { return v === null ? '—' : dec.format(v) + '×'; }
-
-  var inBody = document.getElementById('in-body');
-  function buildInputs() {
-    inBody.innerHTML = data.map(function (r, i) {
-      return '<tr><th scope="row">' + r.nome + '</th>' + FIELDS.map(function (k) {
-        return '<td><input type="number" inputmode="decimal" min="0" step="any" id="in-' + i + '-' + k + '" data-i="' + i + '" data-k="' + k + '" value="' + r[k] + '" aria-label="' + LABELS[k] + ' ' + r.nome + '"></td>';
-      }).join('') + '</tr>';
-    }).join('');
-  }
-  inBody.addEventListener('input', function (e) {
-    var t = e.target;
-    if (!t.dataset || t.dataset.i === undefined) return;
-    var v = parseFloat(t.value);
-    data[+t.dataset.i][t.dataset.k] = isFinite(v) && v > 0 ? v : 0;
-    update();
-  });
-
-  function update() {
-    var rows = data.map(function (r) { return { n: r.nome, m: metrics(r) }; });
-    var withRoas = rows.filter(function (x) { return x.m.roas !== null; })
-                       .sort(function (a, b) { return b.m.roas - a.m.roas; });
-    var best = withRoas.length > 1 ? withRoas[0] : null;
-    var worst = withRoas.length > 1 ? withRoas[withRoas.length - 1] : null;
-    if (best && worst && best.m.roas === worst.m.roas) { best = null; worst = null; }
-
-    document.getElementById('out-body').innerHTML = rows.map(function (x) {
-      var pill = '';
-      if (best && x === best) pill = '<span class="pill good">Maior ROAS</span>';
-      if (worst && x === worst) pill = '<span class="pill bad">Menor ROAS</span>';
-      return '<tr><th scope="row">' + x.n + pill + '</th><td class="num">' + fBrl(x.m.cpm) + '</td><td class="num">' + fPct(x.m.ctr) + '</td><td class="num">' + fBrl(x.m.cpc) + '</td><td class="num">' + fBrl(x.m.cpa) + '</td><td class="num">' + fX(x.m.roas) + '</td><td class="num">' + fPct(x.m.roi) + '</td></tr>';
-    }).join('');
-
-    var tot = { inv: 0, imp: 0, cli: 0, con: 0, rec: 0 };
-    data.forEach(function (r) { FIELDS.forEach(function (k) { tot[k] += r[k]; }); });
-    var tm = metrics(tot);
-    document.getElementById('out-foot').innerHTML = '<tr><th scope="row">Total</th><td class="num">' + fBrl(tm.cpm) + '</td><td class="num">' + fPct(tm.ctr) + '</td><td class="num">' + fBrl(tm.cpc) + '</td><td class="num">' + fBrl(tm.cpa) + '</td><td class="num">' + fX(tm.roas) + '</td><td class="num">' + fPct(tm.roi) + '</td></tr>';
-
-    document.getElementById('s-inv').textContent = brl.format(tot.inv);
-    document.getElementById('s-rec').textContent = brl.format(tot.rec);
-    document.getElementById('s-roas').textContent = fX(tm.roas);
-    document.getElementById('s-roi').textContent = fPct(tm.roi);
-
-    var vals = rows.map(function (x) { return x.m.roas || 0; });
-    var mx = Math.max.apply(null, [1.5].concat(vals)) * 1.1;
-    document.getElementById('chart').innerHTML = rows.map(function (x) {
-      var v = x.m.roas;
-      var pct = v === null ? 0 : Math.min(100, v / mx * 100);
-      var cls = v !== null && v >= 1 ? 'good' : 'bad';
-      return '<div class="bar-row"><span class="bar-name">' + x.n + '</span><div class="track"><div class="bar ' + cls + '" style="width:' + pct + '%"></div><div class="be" style="left:' + (100 / mx) + '%"></div></div><span class="bar-val">' + fX(v) + '</span></div>';
-    }).join('');
-
-    var text;
-    if (withRoas.length < 2) {
-      text = 'Preencha investimento e receita de ao menos dois canais para comparar o retorno.';
-    } else {
-      var b = withRoas[0], w = withRoas[withRoas.length - 1];
-      text = b.n + ' tem o maior retorno (ROAS de ' + fX(b.m.roas) + ') e ' + w.n + ' o menor (' + fX(w.m.roas) + ').';
-      if (w.m.roas < 1) {
-        text += ' ' + w.n + ' está abaixo do break-even: cada R$ 1 investido volta menos de R$ 1 em receita.';
-      } else if (w.m.roas < b.m.roas * 0.6) {
-        text += ' Por real investido, ' + w.n + ' retorna ' + int.format(w.m.roas / b.m.roas * 100) + '% do que ' + b.n + ' retorna. É um candidato a revisão de verba ou de criativos.';
-      } else {
-        text += ' Os canais estão com retornos próximos.';
-      }
-    }
-    document.getElementById('insight').textContent = text;
-  }
-
-  document.getElementById('reset').addEventListener('click', function () {
-    data = clone(DEFAULT);
-    buildInputs();
-    update();
-  });
-
-  document.getElementById('copy').addEventListener('click', function () {
-    var el = document.getElementById('email');
-    var msg = document.getElementById('copy-msg');
-    function fallback() {
-      var r = document.createRange(); r.selectNodeContents(el);
-      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
-      msg.textContent = 'Selecionado. Use Ctrl+C ou o menu de copiar.';
-    }
-    try {
-      navigator.clipboard.writeText(el.textContent).then(function () { msg.textContent = 'E-mail copiado.'; }, fallback);
-    } catch (e) { fallback(); }
-  });
-
-  /* Projeto com IA: relatório semanal escrito pelo Claude a partir dos dados do painel */
-  var aiRun = document.getElementById('ai-run');
-  var aiStop = document.getElementById('ai-stop');
-  var aiWho = document.getElementById('ai-who');
-  var aiOut = document.getElementById('ai-out');
-  var aiStatus = document.getElementById('ai-status');
-  var sampleFn = null;
-  var ctl = null;
-  var PERMANENT = { not_granted: 1, sampling_disabled: 1, not_declared: 1, capability_disabled: 1, capability_removed: 1 };
-  var ERRORS = {
-    not_granted: 'A permissão para usar o Claude não foi concedida a esta página.',
-    sampling_disabled: 'O Claude não está disponível para esta conta.',
-    not_declared: 'Este recurso não está ativo nesta página.',
-    capability_disabled: 'Este recurso não está disponível neste modo de visualização.',
-    capability_removed: 'Este recurso não está disponível neste aplicativo.',
-    rate_limited: 'Limite de uso ou muitas chamadas seguidas. Tente de novo mais tarde.',
-    session_expired: 'Sua sessão expirou. Entre de novo no Claude e tente outra vez.',
-    refused: 'O Claude recusou este pedido. Mude os dados e tente de novo.',
-    empty_completion: 'O Claude não devolveu texto. Tente de novo.',
-    prompt_too_large: 'O pedido ficou grande demais.',
-    upstream_error: 'Houve uma falha de conexão. Tente de novo.'
-  };
-
-  function buildPrompt(publico) {
-    var linhas = data.map(function (r) {
-      var m = metrics(r);
-      return '- ' + r.nome + ': investimento ' + fBrl(r.inv) + '; impressões ' + int.format(r.imp) + '; cliques ' + int.format(r.cli) +
-        '; conversões ' + int.format(r.con) + '; receita ' + fBrl(r.rec) + '; CPM ' + fBrl(m.cpm) + '; CTR ' + fPct(m.ctr) +
-        '; CPC ' + fBrl(m.cpc) + '; CPA ' + fBrl(m.cpa) + '; ROAS ' + fX(m.roas) + '; ROI ' + fPct(m.roi);
-    });
-    var tot = { inv: 0, imp: 0, cli: 0, con: 0, rec: 0 };
-    data.forEach(function (r) { FIELDS.forEach(function (k) { tot[k] += r[k]; }); });
-    var tm = metrics(tot);
-    linhas.push('- Total: investimento ' + fBrl(tot.inv) + '; receita ' + fBrl(tot.rec) + '; CPA ' + fBrl(tm.cpa) + '; ROAS ' + fX(tm.roas) + '; ROI ' + fPct(tm.roi));
-    var leitor = publico === 'interno'
-      ? 'O leitor é um analista sênior da equipe: pode usar as siglas (CPM, CTR, CPC, CPA, ROAS, ROI) sem explicar.'
-      : 'O leitor é o cliente, sem formação em mídia: evite siglas ou explique cada uma em poucas palavras, em tom profissional e direto.';
-    return 'Você é analista de dados de mídia paga em uma agência de branding. Escreva o relatório semanal de performance de campanhas, em português do Brasil.\n\n' +
-      leitor + '\n\n' +
-      'Regras: use apenas os números abaixo. As métricas já estão calculadas, não recalcule. Não invente benchmarks, datas, nomes de campanha nem causas que os números não mostrem, e marque como hipótese toda explicação que não vem dos dados. Compare os canais entre si.\n\n' +
-      'Formato: texto simples, sem tabelas e sem negrito. Use exatamente estas seções, cada título numa linha começando com "## ": Resumo (2 frases); O que os números mostram (3 itens); Recomendação de verba (2 itens); Próximos testes A/B (2 itens); Limites desta análise (1 frase sobre o que os números não cobrem, como margem, atribuição e sazonalidade). Cada item começa com "- ". No máximo 260 palavras.\n\n' +
-      'Dados por canal:\n' + linhas.join('\n');
-  }
-
-  function renderReport(text) {
-    aiOut.textContent = '';
-    var list = null;
-    text.split('\n').forEach(function (line) {
-      var t = line.replace(/\*\*/g, '').trim();
-      if (!t) { list = null; return; }
-      if (t.indexOf('## ') === 0) {
-        list = null;
-        var h = document.createElement('h4'); h.textContent = t.slice(3); aiOut.appendChild(h);
-      } else if (t.indexOf('- ') === 0) {
-        if (!list) { list = document.createElement('ul'); aiOut.appendChild(list); }
-        var li = document.createElement('li'); li.textContent = t.slice(2); list.appendChild(li);
-      } else {
-        list = null;
-        var p = document.createElement('p'); p.textContent = t; aiOut.appendChild(p);
-      }
-    });
-  }
-
-  function resetOut() {
-    aiOut.textContent = '';
-    var p = document.createElement('p');
-    p.className = 'ph';
-    p.textContent = 'O relatório aparece aqui: resumo, leitura dos números, recomendação de verba e próximos testes A/B. Mude os números do painel antes de gerar para ver o texto mudar.';
-    aiOut.appendChild(p);
-  }
-
-  aiRun.addEventListener('click', async function () {
-    if (!sampleFn) return;
-    ctl = new AbortController();
-    aiRun.disabled = true;
-    aiStop.hidden = false;
-    aiStatus.textContent = 'Pensando…';
-    try {
-      var res = await sampleFn(buildPrompt(aiWho.value), {
-        signal: ctl.signal,
-        onText: function (u) { aiStatus.textContent = 'Escrevendo…'; renderReport(u.text); }
-      });
-      aiStatus.textContent = res.truncated ? 'O texto foi cortado pelo limite de tamanho.' : 'Pronto. Revise antes de usar.';
-    } catch (e) {
-      var code = e && e.code;
-      if (code === 'refused') { resetOut(); }
-      else if (e && e.text) { renderReport(e.text); }
-      else { resetOut(); }
-      if (code === 'cancelled') {
-        aiStatus.textContent = 'Interrompido.';
-      } else {
-        aiStatus.textContent = ERRORS[code] || ERRORS.upstream_error;
-        if (PERMANENT[code]) { sampleFn = null; return; }
-      }
-    } finally {
-      aiStop.hidden = true;
-      if (sampleFn) aiRun.disabled = false;
-    }
-  });
-  aiStop.addEventListener('click', function () { if (ctl) ctl.abort(); });
-
-  function aiReady() {
-    if (sampleFn) {
-      aiRun.disabled = false;
-      aiStatus.textContent = '';
-    } else {
-      aiStatus.textContent = 'Este recurso precisa da página aberta no Claude com a IA liberada. O restante do portfólio funciona normalmente.';
-    }
-  }
-  if (window.claude && window.claude.use) {
-    window.claude.use('sample').then(function (s) { sampleFn = s || null; aiReady(); }, function () { sampleFn = null; aiReady(); });
-  } else {
-    aiReady();
-  }
-
-  buildInputs();
-  update();
-})();
-
-(function () {
-  var NEWS = [
-    { s: 'positiva', t: 'Marca Exemplo lança linha sustentável e recebe elogios de especialistas', src: 'Portal Exemplo', d: '20 out', why: 'Destaca inovação e recepção favorável.' },
-    { s: 'negativa', t: 'Marca Exemplo é alvo de reclamações por atraso em entregas', src: 'Jornal Modelo', d: '20 out', why: 'Foca em falha de serviço e queixas de clientes.' },
-    { s: 'neutra',   t: 'Marca Exemplo anuncia nova loja em São Paulo', src: 'Diário Fictício', d: '21 out', why: 'Informa um fato, sem juízo de valor.' },
-    { s: 'positiva', t: 'Campanha da Marca Exemplo viraliza nas redes e supera meta de alcance', src: 'Portal Exemplo', d: '21 out', why: 'Resultado acima do esperado em comunicação.' },
-    { s: 'negativa', t: 'Consumidores criticam reajuste de preços da Marca Exemplo', src: 'Revista Amostra', d: '22 out', why: 'Reúne críticas de consumidores a preço.' },
-    { s: 'neutra',   t: 'Marca Exemplo participa de feira do setor na próxima semana', src: 'Agência Teste', d: '22 out', why: 'Agenda de evento, sem avaliação.' },
-    { s: 'positiva', t: 'Marca Exemplo é premiada por atendimento ao cliente', src: 'Jornal Modelo', d: '23 out', why: 'Reconhecimento público de qualidade.' },
-    { s: 'neutra',   t: 'Analistas divergem sobre impacto da fusão anunciada pela Marca Exemplo', src: 'Revista Amostra', d: '23 out', why: 'Opiniões divididas, sem tendência clara.' },
-    { s: 'negativa', t: 'Marca Exemplo apura falha em lote de produtos e faz recall voluntário', src: 'Diário Fictício', d: '24 out', why: 'Risco de reputação por problema de produto.' },
-    { s: 'neutra',   t: 'Marca Exemplo troca diretor de marketing', src: 'Agência Teste', d: '25 out', why: 'Mudança de pessoal, informada de forma objetiva.' }
-  ];
-  var LBL = { positiva: 'Positiva', neutra: 'Neutra', negativa: 'Negativa' };
-  var CLS = { positiva: 'good', neutra: 'neutral', negativa: 'bad' };
-  var PLURAL = { todas: 'Todas', positiva: 'Positivas', neutra: 'Neutras', negativa: 'Negativas' };
-  var filter = 'todas';
-
-  function count(s) { return NEWS.filter(function (x) { return x.s === s; }).length; }
-  var n = NEWS.length, p = count('positiva'), u = count('neutra'), g = count('negativa');
-
-  document.getElementById('mon-summary').innerHTML =
-    '<strong>Panorama.</strong> Semana com ' + n + ' notícias: ' + p + ' positivas, ' + u + ' neutras e ' + g + ' negativas. ' +
-    'Os destaques positivos vieram do lançamento da linha sustentável, da campanha nas redes e de um prêmio de atendimento. ' +
-    'Os pontos de atenção são os atrasos nas entregas, o reajuste de preços e o recall voluntário, que merece acompanhamento por ser o assunto de maior risco para a reputação.';
-
-  var dist = document.getElementById('mon-dist');
-  dist.setAttribute('aria-label', p + ' positivas, ' + u + ' neutras e ' + g + ' negativas');
-  dist.innerHTML =
-    '<span class="good" style="width:' + (p / n * 100) + '%"></span>' +
-    '<span class="neutral" style="width:' + (u / n * 100) + '%"></span>' +
-    '<span class="bad" style="width:' + (g / n * 100) + '%"></span>';
-
-  var filters = document.getElementById('mon-filters');
-  function render() {
-    filters.innerHTML = ['todas', 'positiva', 'neutra', 'negativa'].map(function (f) {
-      var c = f === 'todas' ? n : count(f);
-      return '<button type="button" data-f="' + f + '" aria-pressed="' + (filter === f) + '">' + PLURAL[f] + ' (' + c + ')</button>';
-    }).join('');
-    document.getElementById('mon-list').innerHTML = NEWS.filter(function (x) {
-      return filter === 'todas' || x.s === filter;
-    }).map(function (x) {
-      return '<div class="news-item"><span class="pill ' + CLS[x.s] + '">' + LBL[x.s] + '</span>' +
-        '<div><div class="t">' + x.t + '</div><div class="meta">' + x.src + ' · ' + x.d + '</div><div class="why">' + x.why + '</div></div></div>';
-    }).join('');
-  }
-  filters.addEventListener('click', function (e) {
-    var b = e.target.closest('button');
-    if (!b) return;
-    filter = b.dataset.f;
-    render();
-  });
-  render();
-})();
-</script>
-
-</body></html>
+<script src="common.js"></script>
+</body>
+</html>
